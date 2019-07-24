@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Bioinformatics – what how and why</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Maria Fernanda Torres Jimenez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- colors= darkblue:#173f5f, lightblue:#20639B, green:#3CAEA3, yellow:#ffd438, red:#ED553B -->
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides" data-transition="fade">
+				<section data-background="#173f5f">
+					<h1><font color="#ffd438">Bioinformática</font></h1>
+					<h3>Herramientas básicas para transformar archivos en datos</h3>
+					<p>
+						<small>María Fernanda Torres Jiménez</small>
+					</p>
+				</section>
+
+				<section data-background="#173f5f">
+				<!-- <section data-background="https://media.giphy.com/media/12W5Sg2koWYnwA/giphy.gif"> -->
+					<h2><font color="#3CAEA3">Según Wikipedia</font></h2>
+					<p>Aplicar herramientas bioinformáticas a las ciencias biológicas.</p>
+				</section>
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section data-background="#173f5f">
+						<h2><font color="#3CAEA3">Historia</font></h2>
+						<p>De secuenciación Sanger a Secuenciación de Nueva Generación <font color="#ED553B">(NGS)</font></p>
+					</section>
+					<section data-background="#ffffff">
+						<p><font color="#173f5f">Gen versus genoma</font></p>
+						<img width="2000" height="300" src="C:\Users\xtorrm\reveal.js\images\gene_to_genomes.png">
+					</section>
+					<section data-background="https://media.giphy.com/media/gU25raLP4pUu4/giphy.gif">
+						<p><font color="#000000">Miles de archivos, miles de caracteres!</font></p>
+					</section>
+				</section>
+				<!-- Intro to the three main things to teach -->
+				<section data-background="#173f5f">
+					<h2><font color="#3CAEA3">Tres componentes útiles</font></h2>
+					<ul>
+						<li>Lenguajes de programación</li>
+						<li>Filogenómica y NGS</li>
+						<li>Bases de datos</li>
+					</ul>
+				</section>
+				<!-- exercises with bash -->
+				<section>
+					<section data-background="#173f5f">
+						<h3><font color="#3CAEA3">Lenguajes de programación</font></h3>
+						<p><span class="fragment highlight-red">Bash, awk, </span><span class="fragment highlight-yellow">Python, R, </span><span class="fragment highlight-green">Perl, Julia, JavaScript</span></p>
+						<img src="https://media.giphy.com/media/dbtDDSvWErdf2/giphy.gif">
+					</section>
+					<section data-background="#173f5f">
+						<h3><font color="#ffd438">Bash</font></h3>
+						<img width="2000" height="480" src="C:\Users\xtorrm\reveal.js\images\bashprompt.png">
+					</section>
+					<section data-background="#ffffff">
+						<h5><font color="#3CAEA3">Estructura y direcciones</font></h5>
+						<img src="C:\Users\xtorrm\reveal.js\images\folder_structure.png">
+					</section>
+					<section data-background="#ffffff">
+						<h5><font color="#3CAEA3">Estructura y direcciones</font></h5>
+						<div class="row">
+						  <div class="column">
+						  	<img src="C:\Users\xtorrm\reveal.js\images\folder_structure.png">
+						  </div>
+						  <div class="column">
+						  	<p><small>C:/MyTests/NFL_Combine/NFL_Combine.sdf</small></p>
+							<p class="fragment"><small>./</small></p>
+							<p><span class="fragment"><small>../../Season-2010/Season2010.sdf</small></span></p>
+						  </div>
+						</div>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Todo lo básico en un sólo lugar</font></h5>
+						<pre><code class="sh">
+#!bash
+ls --help # help es más rápido que google
+ls -lha # lista, leíble, incluyendo archivos ocultos
+mkdir # crear directorios
+cp -r # copiar recursivamente
+mv # mover
+grep # buscar patrones
+sed # reemplazar
+wc -l # conteo de lineas
+cut -f2 -d',' # seleccionar 2da columna csv
+sort # organizar lineas alfabéticamente
+uniq # remueve duplicados
+nano archivo.txt # crear y editar un documento
+gzip # o tar, comprime y descomprime archivos
+						</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Es más productivo saber cómo buscar que saberlo todo</font></h5>
+						<p>ls --help (comando --help)</p>
+						<img src="C:\Users\xtorrm\reveal.js\images\helpargument.png">
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Es más productivo saber cómo buscar que saberlo todo</font></h5>
+						<!-- get the folder and data from github -->
+						<pre><code class="sh" data-trim data-line-numbers="1-5">
+git clone https://github.com/mftorres/bioinformatica_ces.git
+cd bioinformatica_ces/
+ls
+cd bash_ejercicios
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Es más productivo saber cómo buscar que saberlo todo</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="2-3">
+ls # listar elementos
+head -10 secuencias.fasta # primeras 10 líneas
+tail -10 secuencias.fasta # últimas 10 líneas
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Carpetas</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="2">
+# mkdir nuevacarpeta
+mkdir loci_XM loci_XR loci_NR
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Comando, argumento, sujeto, destino</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="3-5,8">
+# copia el sujeto y lo pega en el destino
+# modifica el destino si el destino existe
+cp path/origen/archivo.txt path/destino/archivo.txt
+cp -r path/origen/ path/destino/
+cp secuencias.fasta loci_XM/
+
+# mover elimina el sujeto y el destino
+mv -r path/origen/ path/destino
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Encontrar la aguja en el pajar</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="3,6-7">
+# busca e imprime patrones (expresiones) en el texto
+# modifica el destino si el destino existe
+grep [opciones] [expresión regular] [archivo]
+
+# Encabezados de fastas!
+grep '>' secuencias.fasta
+grep '>XM' secuencias.fasta
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Encontrar la aguja en el pajar</font></h5>
+						<img src="C:\Users\xtorrm\reveal.js\images\grepcolor.png">
+					</section>
+					<section data-background="#272822">
+						<p><font color="#3CAEA3">Leucina: CCT</font></p>
+						<p>grep --color 'CCT' secuencias.fasta</p>
+						<img src="C:\Users\xtorrm\reveal.js\images\leucinecct.png">
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Regular Expressions (REGEX)</font></h5>
+						<p>Todo se reduce a patrones</p>
+						<pre><code class="sh" data-trim data-line-numbers="1-10">
+[A-Z] # un caracter en ABCMRKFJ
+[A-Za-z] # un caracter en ANJckneMFJejbu
+\w # un caracter en ANJckneMFJejbu
+[A-Z]+ # uno on más en ABCMRKFJ
+\w+ # uno on más en ANJckneMFJejbu
+[0-9]+ # uno on más en 028779345
+[8-9][0-9] # 80-99
+\d+ # uno on más en 028779345
+* # cualquier caracter (depende de la versión)
+^ # caracter al principio de la línea
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<p><font color="#3CAEA3">Leucina: CCT, CCA, CCG, CCC</font></p>
+						<p>grep --color 'CC[ACTG]' secuencias.fasta</p>
+						<img src="C:\Users\xtorrm\reveal.js\images\leucineregex.png">
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Regular Expressions (REGEX)</font></h5>
+						<p><a href="https://en.wikipedia.org/wiki/Regular_expression">Wikipedia</a></p>
+						<p><a href="https://www.rexegg.com/regex-quickstart.html">Regex quick-start</a></p>
+						<p><a href="https://regex101.com/">Simulador (test)</a></p>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Encontrar la aguja en el pajar</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="2,6">
+# proteina sm-like LSM7, encargada de degradar mRNA
+grep -A 1 'XM_019852195' secuencias.fasta
+$ >MuestraMFT1
+$ ACGTGTGCAGATCGTACGATCAGTACGATACCT
+
+grep -v 'NN+' secuencias.fasta
+$ ACGTGTGCAGATCGTACGATCAGTACGATACCT
+# no imprime ACGTGTGCAGATCGTNNNNACGATCAGTACGANNNNTACCT
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Reemplazar, editar, organizar</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="2">
+sed argumentos script archivo.txt
+sed [argumentos] 's/match/reemplazo/g' archivo.txt
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Reemplazar, editar, organizar</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1,3-6,8-10">
+grep '>' secuencias.fasta
+
+cp secuencias.fasta loci_XM/
+cd loci_XM/
+sed -i 's/XM/E_guineensis_XM/g' secuencias.fasta # -i "in situ"
+grep 'XM' secuencias.fasta
+
+cp ../secuencias.fasta loci_NR/
+cd ../loci_NR/
+sed -i -e 's/[A-Z]/[a-z]/g' secuencias.fasta # (-e) Regex!
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Reemplazar, editar, organizar</font></h5>
+						<p>Y si quiero mis resultados en un archivo nuevo?</p>
+						<pre><code class="sh" data-trim data-line-numbers="4-5">
+# > envia output a un nuevo archivo
+# > reemplaza el archivo si ya existe
+# >> adjunta al archivo
+sed -e 's/[A-Z]/[a-z]/g' archivo.txt > nuevo.txt
+sed -e 's/[A-Z]/[a-z]/g' archivo.txt >> nuevo.txt
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Reemplazar, editar, organizar</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1,4-9">
+nano test1.txt
+	CAPITALS
+	ctrl+q
+cp test1.txt test2.txt
+sed -e 's/[A-Z]/[a-z]/g' test1.txt > test1nuevo.txt
+sed -e 's/capitals/low case/g' test1.txt > test1nuevo.txt
+
+sed -e 's/[A-Z]/[a-z]/g' test2.txt >> test2nuevo.txt
+sed -e 's/capitals/low case/g' test2.txt >> test2nuevo.txt
+                     	</code></pre>
+					</section>
+					<!-- wc -->
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Contar lineas, letras, etc.</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-2">
+wc -l secuencias.fasta # contar lineas
+wc -c secuencias.fasta # contar caracters
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Contar lineas, letras, etc.</font></h5>
+						<p>Es más útil al final de la línea (pipes y pipelines)</p>
+						<img src="C:\Users\xtorrm\reveal.js\images\data_pipeline_2x.png">
+						<p><small><a href="https://xkcd.com/">xkcd comics</a></small></p>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Contar lineas, letras, etc.</font></h5>
+						<p>Es más útil al final de la línea</p>
+						<pre><code class="sh" data-trim data-line-numbers="2,5,8,11">
+# Cuantas secuencias tengo?
+grep '>' secuencias.fasta | wc -l
+
+# cuantas secuencias contienen (potencialmente) leucinas?
+grep 'CC[ATGC]' secuencias.fasta | wc -l
+
+# cuantos nucleótidos?
+grep -v '>' secuencias.fasta | wc -c
+
+# cuantas secuencias del genoma 'XM'
+grep '>XM' secuencias.fasta | wc -l
+                     	</code></pre>
+					</section>
+					<!-- cut, sort unique -->
+					<!-- make a spreadsheet -->
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Tablas y datos</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-3">
+cut -f2 -d',' tabla.csv # segunda columna del archivo
+cut -f4,10 -d',' tabla.csv # 4ta y 10ma columna 
+cut -f10-13 -d',' tabla.csv # delimitador es ','
+                     	</code></pre>
+					</section>					
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Tablas y datos</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-3">
+cut -f12 -d',' tabla.csv | sort # orden alfabético
+cut -f12 -d',' tabla.csv | sort | uniq # remueve duplicados
+cut -f12 -d',' tabla.csv | sort | uniq -c # No. de observaciones
+                     	</code></pre>
+					</section>
+					<section data-background="#173f5f">
+						<h3><font color="#ffd438">awk</font></h3>
+						<img width="2000" height="480" src="C:\Users\xtorrm\reveal.js\images\bashprompt.png">
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">awk</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="3-7">
+condición {acción}
+awk tabla.csv {print $2}
+cut -f12 -d',' tabla.csv | sort | uniq > genus.txt
+
+while IFS='' read -r line || [[ -n "$line" ]]; do
+    awk -F "," -v var="$line" '$12==var {printf ("%s\t%s\t%s\n",$1,$12,$13)}' tabla.csv > $line.csv
+done < genus.txt
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Compresión y descompresión</font></h5>
+						<img src="C:\Users\xtorrm\reveal.js\images\tar_2x.png">
+						<p><small><a href="https://xkcd.com/">xkcd comics</a></small></p>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Compresión y descompresión</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-2,5,8-9">
+tar --help
+gzip --help
+
+# Comprimir
+tar cvzf file.tar.gz files_to_compress
+
+# Descomprimir
+tar xvf file.tar.gz
+gunzip file.gz
+                     	</code></pre>						
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Loops!</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-3,6">
+for i in *fasta; do
+	echo ${i}
+done
+
+# O en una sola línea
+for i in *fasta; do echo ${i}; done
+                     	</code></pre>						
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Loops!</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-3,6">
+cd fastas
+for i in *fasta; do perl -p -e 's/\n/@/g' ${i} > "${i}".1; done
+                     	</code></pre>						
+					</section>
+				</section>
+				<section>
+					<section data-background="#173f5f">
+						<h3><font color="#3CAEA3">Filogenómica y NGS</font></h3>
+						<img width="700" height="480" src="C:\Users\xtorrm\reveal.js\images\Zhangetal2018.png">
+						<p><small>Zhang et al. 2018</small></p>
+					</section>
+					<section data-background="#ffffff">
+						<h5><font color="#3CAEA3">Generando datos</font></h5>
+						<img src="C:\Users\xtorrm\reveal.js\images\illuminasequencing.jpg">
+						<p><small><a href="https://www.sciencedirect.com/topics/biochemistry-genetics-and-molecular-biology/illumina-dye-sequencing">Illumina dye sequencing</a></small></p>						
+					</section>
+					<section data-background="#ffffff">
+						<h5><font color="#3CAEA3">Pair-end reads</font></h5>
+						<img width="450" height="500" src="C:\Users\xtorrm\reveal.js\images\reads.png">
+						<p><small><a href="https://www.sciencedirect.com/topics/biochemistry-genetics-and-molecular-biology/illumina-dye-sequencing">Illumina dye sequencing</a></small></p>						
+					</section>
+					<section data-background="#ffffff">
+						<h5><font color="#3CAEA3">Fragmentos, contigs y scaffolds</font></h5>
+						<img width="700" height="490" src="C:\Users\xtorrm\reveal.js\images\assembly_layers-500x631.png">
+						<p><small><a href="https://www.ebi.ac.uk/ena/about/genome-assembly-submission-standards">ENA Genome assembly submission standards</a></small></p>
+					</section>
+
+					<section data-background="#ffffff">
+						<h5><font color="#3CAEA3">Ensamblaje</font></h5>
+						<img src="C:\Users\xtorrm\reveal.js\images\debruijn.jpg">
+						<p><small><a href="https://www.nature.com/articles/nbt.2023">Compeau et al. 2011</a></small></p>
+					</section>
+					<section data-background="#ffffff">
+						<h5><font color="#3CAEA3">Tipos de secuenciación</font></h5>
+						<p><font color="#3CAEA3">Muy por encima</font></p>
+						<img src="C:\Users\xtorrm\reveal.js\images\sequencing3.png">
+						<p><small><a href="https://pt.wikipedia.org/wiki/Sequenciamento_Shotgun">Wikipedia</a></small></p>
+					</section>
+
+					<section data-background="#ffffff">
+						<h5><font color="#3CAEA3">Profundidad de secuenciación</font></h5>
+						<img width="800" height="600" src="C:\Users\xtorrm\reveal.js\images\coveragereads.png">
+					</section>
+					<!-- back to pipelines -->
+					<section data-background="#173f5f">
+						<h3><font color="#3CAEA3">Filogenómica y NGS</font></h3>
+						<img width="700" height="480" src="C:\Users\xtorrm\reveal.js\images\Zhangetal2018.png">
+						<p><small>Zhang et al. 2018</small></p>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Pipelines</font></h5>
+						<img src="C:\Users\xtorrm\reveal.js\images\gatkgermline.png">
+						<p><small><a href="https://software.broadinstitute.org/gatk/">GATK - Genome Analysis Toolkit</a></small></p>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Pipelines</font></h5>
+						<img width="300" height="600" src="C:\Users\xtorrm\reveal.js\images\whothehell.jpg">
+					</section>
+					<!-- CONDA -->
+					<section data-background="#ffffff">
+						<h5><font color="#3CAEA3">Compatibilidad y reproducibilidad</font></h5>
+						<img src="C:\Users\xtorrm\reveal.js\images\conda.png">
+						<p><small><a href="https://docs.conda.io/en/latest/">CONDA</a></small></p>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">CONDA</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-2">
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sh Miniconda2-latest-*.sh
+conda update conda # se puede demorar
+                     	</code></pre>
+					</section>
+
+					<!-- SECAPR -->
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">SEquence CApture PRocessor</font></h5>
+						<img width="300" height="300" src="C:\Users\xtorrm\reveal.js\images\secapr_logo.png">
+						<p><small><a href="https://github.com/AntonelliLab/seqcap_processor">SECAPR in github</a></small></p>
+						<p><small><a href="https://peerj.com/articles/5175/">SECAPR paper</a></small></p>
+					</section>
+					<section data-background="#ffffff">
+						<h5><font color="#3CAEA3">SECAPR</font></h5>
+						<img width="500" height="580" src="C:\Users\xtorrm\reveal.js\images\secaprworkflow.png">
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">SECAPR</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-2,5-6">
+conda create -n secapr_env secapr
+source activate secapr_env
+# source deactivate
+# conda env list
+cd filogenomica/files
+ls
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Calidad de los datos crudos</font></h5>
+						<!-- 15:38 a -->
+						<pre><code class="sh" data-trim data-line-numbers="1-2">
+gunzip *gz
+secapr quality_check --input files/ --output raw/
+# chrome raw/bad_sequence_fastqc.html
+                     	</code></pre>
+					</section>
+					<section data-background="#ffffff">
+						<h5><font color="#3CAEA3">FASTQC</font></h5>
+						<img width="590" height="490" src="C:\Users\xtorrm\reveal.js\images\fastqc_clean.png">
+						<p><small><a href="file:///C:/Users/xtorrm/reveal.js/bioinformatica_ces/filogenomica/raw/Aip_tri_A43a_S79_L007_MJS_R1_fastqc.html">Datos buenos, </a> <a href="file:///C:/Users/xtorrm/reveal.js/bioinformatica_ces/filogenomica/raw/bad_sequence_fastqc.html">datos malos.</a></small></p>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Remover adaptadores</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="2-5">
+# files/config_file.txt
+pwd
+cd files/
+python index2configfile.py
+less config_file.txt
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Remover adaptadores</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-2">
+cd ../
+secapr clean_reads --input files/ --config files/config_file.txt --output cleaned/ --index double
+# secapr quality_check --input cleaned/ --output cleaned_fastqc/
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Remover adaptadores</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-8">
+secapr clean_reads -h
+--seedMismatches SEEDMISMATCHES
+                        Specifies the maximum mismatch count which will still
+                        allow a full match to be performed.
+--requiredQuality REQUIREDQUALITY
+                        Specifies the average quality required.
+--minLength MINLENGTH
+                        Specifies the minimum length of reads to be kept.
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Ensamblar!</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1">
+secapr assemble_reads --input cleaned/ --output contigs/
+# ls cleaned/ # archivos en carpetas, una por muestra
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Ensamblar!</font></h5>
+						<!-- width="590" height="490"  -->
+						<img width="570" height="590" src="C:\Users\xtorrm\reveal.js\images\endassembly.png">
+					</section>
+					<!-- add something ABOUT DE BRUIJIN graphs -->
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Recuperar genes target</font></h5>
+						<!-- Filter alignments by how much of the input sequence they cover, 0 ≤ min ≤ max ≤ 100 percent. Coverage is the percentage of the entire target or query sequence (whichever is shorter) that is included in the alignment block. Blocks outside the given range are discarded. -->
+
+						<!-- Filter alignments by their percent identity, 0 ≤ min ≤ max ≤ 100 percent. Identity is the percentage of aligned bases that are matches. Alignment blocks outside the given range are discarded. This option is not valid with quantum DNA. -->
+						<pre><code class="sh" data-trim data-line-numbers="1">
+secapr find_target_contigs --contigs contigs/ --reference LOC_sequences.fasta --output target_contigsLOC/ --keep-duplicates --min-coverage 80 --min-identity 80
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Recuperar genes target</font></h5>
+						<img src="C:\Users\xtorrm\reveal.js\images\assemblyout.png">
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Recuperar genes target</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-6">
+ --min-coverage MIN_COVERAGE
+                        The minimum percent coverage required for a match
+                        [default=80].
+ --min-identity MIN_IDENTITY
+                        The minimum percent identity required for a match
+                        [default=80].
+                     	</code></pre>
+					</section>
+					<!-- DE ACA EN ADELANTE TENGO QUE HACER -->
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Alineamientos</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1,3">
+secapr align_sequences --sequences target_contigsLOC/extracted_target_contigs_all_samples.fasta --output contig_alignments/ --aligner mafft --output-format fasta --no-trim --ambiguous
+# mafft para secuencias muy largas o distantes, muscle para el resto.
+less 4920.fasta
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Alineamientos</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-4">
+for i in *fasta; do echo ${i} >> contig_count.txt; grep '>' ${i} | wc -l >> contig_count.txt; done
+perl -p -e 's/\n/\t/g' contig_count.txt > contig_count1.txt
+perl -p -e 's/(\d+.fasta)/\n\1/g' contig_count1.txt > contig_count2.txt
+awk '$2 > 8' contig_count2.txt | head
+awk '$2 > 8' contig_count2.txt | awk '{print $1}' > selected_loci.txt
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">ML en RAxML</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-8">
+source deactivate
+conda install -c bioconda raxml
+
+while IFS='' read -r line || [[ -n "$line" ]]; do
+    raxmlHPC -f a -m GTRGAMMA -p 666 -x 666 -# 500 -s $line -n $line -o Aip_tri_A43a_S79_L007_MJS
+done < selected_loci.txt
+
+cat *RAxML_bipartitionsBranchLabels* > Cer_genetrees.trees
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Astral</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-2,4-5">
+cd ../
+git clone https://github.com/smirarab/ASTRAL/
+# https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
+cd ASTRAL
+java -jar astral.5.6.3.jar -i Cer_genetrees.trees -o Cer_spptree.tree
+
+                     	</code></pre>
+					</section>
+				</section>
+				<section>
+					<section data-background="#ffffff">
+						<h3><font color="#3CAEA3">Bases de datos</font></h3>
+						<img width="730" height="570" src="C:\Users\xtorrm\reveal.js\images\ncbi.png">
+					</section>
+					<section data-background="#ffffff">
+						<h3><font color="#3CAEA3">Basic Local Alignment Search Tool</font></h3>
+						<img src="C:\Users\xtorrm\reveal.js\images\blast.png">
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Local [t]blast[nx]</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-3">
+conda install -c bioconda blast
+conda install -c bioconda entrez-direct
+conda env list
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Base de datos local</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-3">
+cd blast
+esearch -db nucleotide -query "txid4710[Organism]" | efetch -format fasta > arecaceae.fasta;
+makeblastdb -in arecaceae.fasta -dbtype nucl -out arecaceaedb
+                     	</code></pre>
+					</section>
+					<section data-background="#272822">
+						<h5><font color="#3CAEA3">Base de datos local</font></h5>
+						<pre><code class="sh" data-trim data-line-numbers="1-3">
+makeblastdb -in GCF_000442705.1_EG5_protein.faa -dbtype prot -out eguineensis $2> makeblast_prot.err;
+                     	</code></pre>
+					</section>
+
+			</div>
+
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
